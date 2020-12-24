@@ -1,0 +1,9 @@
+{
+    "name": "tarekdj/phpcs-replace-namespace",
+    "type": "library",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "license": "MIT",
+    "require": {}
+}
