@@ -1,6 +1,6 @@
 <?php
 
-namespace PHP_CodeSniffer\Standards\replacenamespace\Sniffs\Namespaces;
+namespace PHP_CodeSniffer\Standards\nsfix\Sniffs\Namespaces;
 
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
