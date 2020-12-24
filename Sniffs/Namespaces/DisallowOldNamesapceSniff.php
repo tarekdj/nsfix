@@ -1,6 +1,6 @@
 <?php
 
-namespace PHP_CodeSniffer\Standards\AlmaviaStandard\Sniffs\Namespaces;
+namespace PHP_CodeSniffer\Standards\replacenamespace\Sniffs\Namespaces;
 
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
@@ -8,12 +8,13 @@ use PHP_CodeSniffer\Files\File;
 class DisallowOldNamesapceSniff implements Sniff
 {
 
-    const OLD_NS = 'CHANGE_ME';
-    const NEW_NS = 'CHANGE_ME';
-
     private $fixer;
 
     private $position;
+
+    private $found;
+
+    public $nameSpacesMapping = [];
 
     /**
      * Returns the token types that this sniff is interested in.
@@ -35,18 +36,18 @@ class DisallowOldNamesapceSniff implements Sniff
      * @param \PHP_CodeSniffer\Files\File $phpcsFile The current file being checked.
      * @param int                         $stackPtr  The position of the current token in the
      *                                               stack passed in $tokens.
-     *
-     * @return void
      */
-    public function process(File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr): void
     {
         $this->fixer = $phpcsFile->fixer;
         $tokens = $phpcsFile->getTokens();
         $ns = $phpcsFile->findNext(T_STRING, $stackPtr+1);
         $this->position = $ns;
-        if ($tokens[$ns]['content'] === self::OLD_NS) {
-            $error = "Deprecated " . self::OLD_NS . " Namespace; found %s";
-            $data  = [$tokens[$stackPtr]['content'] . " " . trim($tokens[$ns]['content'])];
+
+        if (array_key_exists($tokens[$ns]['content'], $this->nameSpacesMapping)) {
+            $this->found = $tokens[$ns]['content'];
+            $error = "Deprecated " . $this->found . " Namespace; found %s";
+            $data  = [$tokens[$stackPtr]['content'] . " " . trim($this->found)];
             $phpcsFile->addFixableError(
                 $error,
                 $stackPtr,
@@ -61,9 +62,17 @@ class DisallowOldNamesapceSniff implements Sniff
     /**
      * Replaces the old namespace by the new one.
      */
-    private function fix(): void
+    protected function fix(): void
     {
-        $this->fixer->replaceToken($this->position, self::NEW_NS);
+        $newNamespace = $this->getNewNamespace();
+        $this->fixer->replaceToken($this->position, $newNamespace);
+    }
+
+    /**
+     * Get the namespace replacement.
+     */
+    protected function getNewNamespace(): string
+    {
+        return $this->nameSpacesMapping[$this->found] ?? '';
     }
 }
-
