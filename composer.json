@@ -1,6 +1,7 @@
 {
     "name": "tarekdj/nsfix",
-    "type": "library",
+    "description": "PHP_CodeSniffer custom sniff that finds a set of namespaces and replace it by new ones.",
+    "type": "phpcodesniffer-standard",
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5"
     },
