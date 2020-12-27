@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="ReplaceNamespaces">
+    <rule ref="../Sniffs/Namespaces/DisallowOldNamesapceSniff.php">
+        <properties>
+            <property name="nameSpacesMapping" type="array">
+                <element key="Tarekdj" value="NsfixTest"/>
+            </property>
+        </properties>
+    </rule>
+</ruleset>
