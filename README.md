@@ -1,4 +1,4 @@
-# nsfix
+# nsfix [![Build Status](https://travis-ci.com/tarekdj/nsfix.svg?branch=main)](https://travis-ci.com/tarekdj/nsfix)
 
 This is a phpcs sniff that finds a set of namespaces and replace it by new ones.
 
