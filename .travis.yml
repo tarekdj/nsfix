@@ -4,6 +4,6 @@ php:
  
 before_script: 
   - composer install
-  - chmod +x ./test/script.sh
+
 script: 
-  - ./test/script.sh
+  - ./vendor/bin/phpcs --standard=test/phpcs.xml test/file.php | grep -q "FOUND 3 ERRORS AFFECTING 30 LINES"
