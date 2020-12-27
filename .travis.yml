@@ -3,4 +3,4 @@ php:
   - 7.4
  
 before_script: composer install
-script: vendor/bin/phpcs --standard=test/phpcs.xml test/file.php
+script: vendor/bin/phpcs --standard=test/phpcs.xml test/file.php | grep -q "FOUND 3 ERRORS AFFECTING 3 LINES"
