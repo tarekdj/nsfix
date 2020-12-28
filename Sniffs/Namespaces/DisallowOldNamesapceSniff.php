@@ -25,7 +25,11 @@ class DisallowOldNamesapceSniff implements Sniff
     {
         return [
             T_NAMESPACE,
-            T_USE
+            T_USE,
+            T_NEW,
+            T_OPEN_PARENTHESIS,
+            T_EXTENDS,
+            T_IMPLEMENTS
         ];
 
     }
