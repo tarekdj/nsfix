@@ -4,7 +4,7 @@ This is a phpcs sniff that finds a set of namespaces and replace it by new ones.
 
 ## Installation
 
-composer require tarekdj/nsfix --dev 
+``composer require tarekdj/nsfix --dev ``
 
 ## Usage
 
