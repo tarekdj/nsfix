@@ -39,3 +39,30 @@ Create a ruleset file with the following content (Don't forget to set old and ne
 ./vendor/bin/phpcbf --standard=PATH/TO/RULESET.xml PATH/TO/SRC 
 ```
 
+### Result example
+
+```diff
+--- a/test/file.php
++++ b/test/file.php
+@@ -1,14 +1,14 @@
+ <?php
+-namespace Tarekdj;
++namespace NsfixTest;
+ 
+-use Tarekdj\Dummy;
+-use Tarekdj\Fake;
++use NsfixTest\Dummy;
++use NsfixTest\Fake;
+ 
+-$test = new \Tarekdj\DummyClass()
++$test = new \NsfixTest\DummyClass()
+ 
+-class MyClass extends \Tarekdj\MyDummyClass implements \Tarekdj\DummyInterface
++class MyClass extends \NsfixTest\MyDummyClass implements \NsfixTest\DummyInterface
+ {
+-    public function __construct(\Tarekdj\Fake $fake)
++    public function __construct(\NsfixTest\Fake $fake)
+     {
+ 
+     }
+```
